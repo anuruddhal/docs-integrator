@@ -1,44 +1,83 @@
 ---
 sidebar_position: 7
-title: "Quick Start: Build an API Integration"
-description: Build an HTTP service that calls an external API in under 10 minutes.
+title: "Quick Start: Integration as API"
+description: Build an HTTP service that calls an external API and returns a greeting.
 ---
 
-# Build an API Integration
+# Quick Start: Integration as API
 
-**Time:** Under 10 minutes · **What you'll build:** An HTTP service that receives requests, calls an external API, transforms the response, and returns it.
-
-<!-- TODO: Add architecture diagram -->
+**Time:** Under 10 minutes | **What you'll build:** An HTTP service that receives requests, calls an external API, and returns the response.
 
 ## Prerequisites
 
-- [VS Code extension installed](install.md)
-- [Project created](first-project.md)
+- [WSO2 Integrator extension installed](install.md)
 
-## Step 1: Create an HTTP Service
+## Architecture
 
-<!-- TODO: Visual + code side-by-side -->
+```
+Client                    Your Service               External API
+  │                      /hello:9090              apis.wso2.com
+  │  GET /greeting            │                        │
+  │──────────────────────────►│   GET /mi-qsg/v1.0     │
+  │                           │───────────────────────►│
+  │                           │◄───────────────────────│
+  │◄──────────────────────────│   {"message":"Hello"}  │
+  │  {"message":"Hello!!!"}   │                        │
+```
 
-## Step 2: Define a Resource
+## Step 1: Create the Project
 
-<!-- TODO: Add GET resource with path parameter -->
+1. Open the WSO2 Integrator sidebar in VS Code.
+2. Click **Create New Integration**.
+3. Enter the integration name (e.g., `HelloWorld`).
+4. Click **Create Integration**.
 
-## Step 3: Call an External API
+## Step 2: Add an HTTP Service
 
-<!-- TODO: Add HTTP client call -->
+1. In the design view, add an **HTTP Service** artifact.
+2. Set the base path to `/hello` and port to `9090`.
+3. Add a **GET** resource at the path `/greeting`.
 
-## Step 4: Transform the Response
+## Step 3: Connect to an External API
 
-<!-- TODO: Map external response to your API's response format -->
+1. Add an HTTP connection to `https://apis.wso2.com/zvdz/mi-qsg/v1.0`.
+2. In the GET resource, invoke the external API and return its response.
 
-## Step 5: Run and Test
+In code, this looks like:
 
-1. Click **Run** in the toolbar
-2. Open the **Try-It** tool
-3. Send a GET request and verify the response
+```ballerina
+import ballerina/http;
+
+final http:Client externalApi = check new ("https://apis.wso2.com/zvdz/mi-qsg/v1.0");
+
+service /hello on new http:Listener(9090) {
+    resource function get greeting() returns json|error {
+        json response = check externalApi->get("/");
+        return response;
+    }
+}
+```
+
+## Step 4: Run and Test
+
+1. Click **Run** in the toolbar (top-right corner).
+2. Once the service starts, test with curl:
+
+```bash
+curl http://localhost:9090/hello/greeting
+```
+
+Expected response:
+
+```json
+{"message": "Hello World!!!"}
+```
+
+You can also use the built-in **Try It** panel in VS Code to test the endpoint interactively.
 
 ## What's Next
 
-- [Build Event Handlers](/docs/develop/build/event-handlers) — React to messages from Kafka or RabbitMQ
-- [Visual Data Mapper](/docs/develop/transform/data-mapper) — Advanced data transformation
-- [Unit Testing](/docs/develop/test/unit-testing) — Test your integration
+- [Quick Start: Automation](quick-start-automation.md) -- Build a scheduled job
+- [Quick Start: AI Agent](quick-start-ai-agent.md) -- Build an intelligent agent
+- [Quick Start: Event Integration](quick-start-event.md) -- React to messages from Kafka or RabbitMQ
+- [Tutorials](/docs/tutorials) -- End-to-end walkthroughs and patterns

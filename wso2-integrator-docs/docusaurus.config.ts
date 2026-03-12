@@ -30,6 +30,21 @@ const config: Config = {
     locales: ['en'],
   },
 
+  themes: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      {
+        hashed: true,
+        language: ['en'],
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+        docsRouteBasePath: '/docs',
+        indexBlog: false,
+        searchBarShortcutHint: false,
+      },
+    ],
+  ],
+
   presets: [
     [
       'classic',
@@ -77,6 +92,11 @@ const config: Config = {
           position: 'left',
         },
         {
+          to: '/docs/genai',
+          label: 'GenAI',
+          position: 'left',
+        },
+        {
           to: '/docs/tutorials',
           label: 'Tutorials',
           position: 'left',
@@ -112,10 +132,11 @@ const config: Config = {
         {
           title: 'Develop',
           items: [
-            {label: 'Build', to: '/docs/develop/build/services'},
+            {label: 'Integration Artifacts', to: '/docs/develop/integration-artifacts'},
             {label: 'Transform', to: '/docs/develop/transform/data-mapper'},
             {label: 'Test', to: '/docs/develop/test/try-it'},
             {label: 'Connectors', to: '/docs/connectors'},
+            {label: 'GenAI', to: '/docs/genai'},
           ],
         },
         {
