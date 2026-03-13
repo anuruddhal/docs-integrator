@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'WSO2 Integrator Documentation',
+  title: 'Documentation',
   tagline: 'Build integrations with low-code simplicity and pro-code power',
   favicon: 'img/favicon.svg',
 
@@ -69,7 +69,7 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'WSO2 Integrator',
+      title: '',
       logo: {
         alt: 'WSO2 Integrator Logo',
         src: 'img/logo.svg',
@@ -77,37 +77,44 @@ const config: Config = {
       },
       items: [
         {
-          to: '/docs/get-started',
+          type: 'docSidebar',
+          sidebarId: 'getStartedSidebar',
           label: 'Get Started',
           position: 'left',
         },
         {
-          to: '/docs/develop',
+          type: 'docSidebar',
+          sidebarId: 'developSidebar',
           label: 'Develop',
           position: 'left',
         },
         {
-          to: '/docs/connectors',
+          type: 'docSidebar',
+          sidebarId: 'connectorsSidebar',
           label: 'Connectors',
           position: 'left',
         },
         {
-          to: '/docs/genai',
+          type: 'docSidebar',
+          sidebarId: 'genaiSidebar',
           label: 'GenAI',
           position: 'left',
         },
         {
-          to: '/docs/tutorials',
+          type: 'docSidebar',
+          sidebarId: 'tutorialsSidebar',
           label: 'Tutorials',
           position: 'left',
         },
         {
-          to: '/docs/deploy-operate',
+          type: 'docSidebar',
+          sidebarId: 'deployOperateSidebar',
           label: 'Deploy & Operate',
           position: 'left',
         },
         {
-          to: '/docs/reference',
+          type: 'docSidebar',
+          sidebarId: 'referenceSidebar',
           label: 'Reference',
           position: 'left',
         },
