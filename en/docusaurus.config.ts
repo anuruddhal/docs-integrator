@@ -77,37 +77,44 @@ const config: Config = {
       },
       items: [
         {
-          to: '/docs/get-started',
+          type: 'docSidebar',
+          sidebarId: 'getStartedSidebar',
           label: 'Get Started',
           position: 'left',
         },
         {
-          to: '/docs/develop',
+          type: 'docSidebar',
+          sidebarId: 'developSidebar',
           label: 'Develop',
           position: 'left',
         },
         {
-          to: '/docs/connectors',
+          type: 'docSidebar',
+          sidebarId: 'connectorsSidebar',
           label: 'Connectors',
           position: 'left',
         },
         {
-          to: '/docs/genai',
+          type: 'docSidebar',
+          sidebarId: 'genaiSidebar',
           label: 'GenAI',
           position: 'left',
         },
         {
-          to: '/docs/tutorials',
+          type: 'docSidebar',
+          sidebarId: 'tutorialsSidebar',
           label: 'Tutorials',
           position: 'left',
         },
         {
-          to: '/docs/deploy-operate',
+          type: 'docSidebar',
+          sidebarId: 'deployOperateSidebar',
           label: 'Deploy & Operate',
           position: 'left',
         },
         {
-          to: '/docs/reference',
+          type: 'docSidebar',
+          sidebarId: 'referenceSidebar',
           label: 'Reference',
           position: 'left',
         },
@@ -124,7 +131,7 @@ const config: Config = {
         {
           title: 'Get Started',
           items: [
-            {label: 'Overview', to: '/docs/get-started/overview'},
+            {label: 'Overview', to: '/docs/get-started/why-wso2-integrator'},
             {label: 'Install', to: '/docs/get-started/install'},
             {label: 'Quick Starts', to: '/docs/get-started/quick-start-api'},
           ],
@@ -132,11 +139,11 @@ const config: Config = {
         {
           title: 'Develop',
           items: [
-            {label: 'Integration Artifacts', to: '/docs/develop/integration-artifacts'},
+            {label: 'Integration Artifacts', to: '/docs/develop/integration-artifacts/overview'},
             {label: 'Transform', to: '/docs/develop/transform/data-mapper'},
             {label: 'Test', to: '/docs/develop/test/try-it'},
-            {label: 'Connectors', to: '/docs/connectors'},
-            {label: 'GenAI', to: '/docs/genai'},
+            {label: 'Connectors', to: '/docs/connectors/overview'},
+            {label: 'GenAI', to: '/docs/genai/overview'},
           ],
         },
         {
