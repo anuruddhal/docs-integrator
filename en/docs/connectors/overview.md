@@ -88,5 +88,5 @@ Not all connectors support both — see each connector's documentation for what'
 
 ## Next Steps
 
-- [Connector Catalog](index.md) — Browse all available connectors
+- [Connector Catalog](catalog/index.md) — Browse all available connectors
 - [Build Your Own](build-your-own/custom-development.md) — Create a custom connector
