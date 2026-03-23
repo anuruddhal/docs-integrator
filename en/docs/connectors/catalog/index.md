@@ -225,8 +225,3 @@ Browse the full catalog of pre-built connectors for SaaS applications, databases
 | [Alfresco](storage-file/alfresco/overview.md) | Enterprise content management platform with document CRUD, versioning, shared links, and collaboration features | Create, Read, Update, Delete, Upload, Download, Copy, Move, Search | Basic Authentication |
 | [AWS S3](storage-file/aws.s3/overview.md) | Object storage with bucket management, object CRUD, presigned URLs, and multipart uploads | Create, Read, Delete, List, Presign, Multipart Upload | AWS Access Keys / IAM Role |
 | [Microsoft OneDrive](storage-file/microsoft.onedrive/overview.md) | Cloud file storage with drive/item CRUD, content upload/download, sharing, and search | List, Create, Read, Update, Delete, Upload, Download, Copy, Share, Search | OAuth 2.0 |
-
-## Build Your Own
-
-- [Create from OpenAPI Spec](build-your-own/create-from-openapi.md) — Generate connectors directly in the IDE from an OpenAPI definition
-- [Custom Development](build-your-own/custom-development.md) — Build a connector from scratch using Ballerina

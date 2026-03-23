@@ -1,92 +1,79 @@
 ---
 title: "Connectors Overview"
-description: "What are connectors and how they work in WSO2 Integrator."
+description: "Connect WSO2 Integrator to external services, APIs, databases, and messaging systems."
 ---
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # Connectors Overview
 
-Connectors are pre-built integration components that let you connect WSO2 Integrator to external services, APIs, databases, and messaging systems — without writing low-level HTTP or protocol code.
+Send a Slack notification when an order ships. Read customer records from Salesforce. Write results to a Google Sheet. Query a database and return the data in an API response.
 
-## What Is a Connector?
+Connectors make these integrations possible—without writing low-level HTTP or protocol code. WSO2 Integrator includes 200+ pre-built connectors for the services your business already uses.
 
-A connector is a Ballerina package that wraps an external service's API into a set of typed, ready-to-use clients and operations. Instead of manually constructing HTTP requests, handling authentication, and parsing responses, you work with strongly-typed Ballerina records and function calls.
+## How connectors fit into your integration
 
-![Connection Page](/img/connectors/overview/connection-landing-page.png)
+Every integration in WSO2 Integrator follows the same pattern:
 
-For example, to send an SMS via Twilio:
-<Tabs>
-<TabItem value="ui" label="Visual Designer" default>
+```mermaid
+flowchart LR
+    A([Trigger])
 
-1. Create a Twilio connection by following the steps in [Connections](../develop/integration-artifacts/supporting/connections.md).
+    A --> B
 
-2. In the canvas, click **+** to add a new operation.
+    B["Transform & route
+    (map, filter, branch)"]
 
-3. From the connector list, select the client you created, then choose the **Create Message** action.
+    B --> C
 
-   ![Select Twilio Client](/img/connectors/overview/select-twilio.png)
+    subgraph connector["Connector"]
+        C["Connector action
+        (call external service)"]
+    end
 
-4. In the action configuration panel, fill the following values,
-    ```
-    Payload: 
-    {
-	To: "+1234567890",
-	From: "+0987654321",
-	Body: "Hello from WSO2 Integrator!"
-    }
-    ```
+    C --> D
 
-   ![Fill Twilio Create Message](/img/connectors/overview/fill-twilio-create-message.png)
+    D["Handle response
+    (error handling, retry)"]
 
-5. Click **Save**. The action is now part of your integration flow.
+    D --> E([Output])
 
-   ![Twilio Create Message Completed](/img/connectors/overview/twilio-completed.png)
+    style A fill:#EEEDFE,stroke:#534AB7,color:#3C3489
+    style B fill:#F1EFE8,stroke:#5F5E5A,color:#444441
+    style C fill:#FAECE7,stroke:#993C1D,color:#712B13
+    style D fill:#F1EFE8,stroke:#5F5E5A,color:#444441
+    style E fill:#E1F5EE,stroke:#0F6E56,color:#085041
+    style connector fill:#fafafa,stroke:#cbd5e1,stroke-dasharray:5 5,color:#64748b
+```
 
-</TabItem>
-<TabItem value="source" label="Source" default>
+The connector action is where WSO2 Integrator communicates with the external service.
 
-    ```ballerina
-    import ballerinax/twilio;
+## Key concepts
 
-    twilio:Client twilio = check new ({
-        auth: {
-            username: accountSid,
-            password: authToken
-        }
-    });
+### Connector
 
-    twilio:CreateMessageRequest message = {
-        to: "+1234567890",
-        from_: "+0987654321",
-        body: "Hello from WSO2 Integrator!"
-    };
+A connector is a pre-built integration component (implemented as a Ballerina package) that wraps an external service's API into ready-to-use operations. Instead of constructing HTTP requests and parsing responses by hand, you select an action from the connector's list and configure its inputs.
 
-    twilio:Message response = check twilio->createMessage(message);
-    ```
-</TabItem>
-</Tabs>
+### Connection
 
-## How Connectors Work in WSO2 Integrator
+A connection is a named, reusable configuration that holds the credentials and endpoint settings for an external service—API keys, OAuth tokens, hostnames. You define it once; every action in your integration uses it by name.
 
-WSO2 Integrator is built on Ballerina, and connectors are distributed as packages on [Ballerina Central](https://central.ballerina.io). When you add a connector to your integration project:
+For details on creating and managing connections, see [Connections](../develop/integration-artifacts/supporting/connections.md).
 
-1. **Import** — Add the connector package as a dependency in your `Ballerina.toml`
-2. **Configure** — Provide credentials and connection settings (API keys, OAuth tokens, endpoints) using Ballerina's `configurable` variables
-3. **Invoke** — Call connector operations directly in your integration logic using Ballerina's `check` expression for error handling
+### Action
 
-## Actions and Triggers
+An action is a specific operation you invoke through a connection—"send SMS", "create contact", "execute query". Each connector exposes a list of available actions. Actions are outbound: your integration calls the external service.
 
-Connectors expose two types of integration points:
+### Trigger
 
-| Type | Description | Example |
-|------|-------------|---------|
-| **Actions** | Outbound calls you make to the external service | Send a message, create a record, query data |
-| **Triggers** | Inbound events the external service sends to your integration | New database row, incoming message, file upload |
+Some connectors also support triggers—inbound events the external service pushes into your integration. A database trigger fires when a row changes. A messaging trigger fires when a new message arrives.
 
-Not all connectors support both — see each connector's documentation for what's available.
+| | Actions | Triggers |
+|---|---|---|
+| Direction | Your integration calls the service | The service calls your integration |
+| Example | Send an SMS, create a Salesforce record | New database row, incoming webhook |
 
-## Next Steps
+Most connectors are action-only. Trigger support is available for select connectors—primarily databases (MySQL, PostgreSQL, MSSQL), messaging systems (Kafka, RabbitMQ), and file storage. See each connector's documentation for what's available.
 
-- [Connector Catalog](catalog/index.md) — Browse all available connectors
-- [Build Your Own](build-your-own/custom-development.md) — Create a custom connector
+## Next steps
+
+- [Connector catalog](catalog/index.md) — Browse all available connectors
+- [Connections](../develop/integration-artifacts/supporting/connections.md) — Create and manage connections

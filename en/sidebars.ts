@@ -271,6 +271,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'Connector Catalog',
+      collapsed: true,
       link: { type: 'doc', id: 'connectors/catalog/index' },
       items: [
         // ── Connector categories (alphabetical) ──
