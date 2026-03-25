@@ -139,23 +139,6 @@ const sidebars: SidebarsConfig = {
             },
           ],
         },
-        // 6.4 Build Integrations
-        {
-          type: 'category',
-          label: 'Build Integrations',
-          items: [
-            'develop/build/services',
-            'develop/build/event-handlers',
-            'develop/build/file-processing',
-            'develop/build/automations',
-            'develop/build/ai-agents',
-            'develop/build/rag-applications',
-            'develop/build/control-flow',
-            'develop/build/error-handling',
-            'develop/build/configuration-management',
-            'develop/build/ballerina-pro-code',
-          ],
-        },
         // 6.4 Design Integration Logic
         {
           type: 'category',
@@ -196,6 +179,7 @@ const sidebars: SidebarsConfig = {
           label: 'Try & Test',
           items: [
             'develop/test/try-it',
+            'develop/test/ai-test-generation',
             'develop/test/unit-testing',
             'develop/test/test-services-clients',
             'develop/test/data-driven-tests',
@@ -203,7 +187,6 @@ const sidebars: SidebarsConfig = {
             'develop/test/mocking',
             'develop/test/execute-tests',
             'develop/test/code-coverage',
-            'develop/test/ai-test-generation',
           ],
         },
         // 6.7 Debugging & Troubleshooting
