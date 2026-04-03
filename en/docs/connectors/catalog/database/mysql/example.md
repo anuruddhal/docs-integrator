@@ -41,11 +41,11 @@ After selecting **MySQL** from the palette, the **Configure MySQL** form opens. 
 
 Configure the following parameters:
 
-- **host** — MySQL server hostname, bound to a string configurable
-- **user** — Database username, bound to a string configurable
-- **password** — Database user password, bound to a string configurable
-- **database** — Database name to connect to, bound to a string configurable
-- **port** — MySQL server port, bound to an int configurable
+- **host**: MySQL server hostname, bound to a string configurable
+- **user**: Database username, bound to a string configurable
+- **password**: Database user password, bound to a string configurable
+- **database**: Database name to connect to, bound to a string configurable
+- **port**: MySQL server port, bound to an int configurable
 
 Set the **Connection Name** to `mysqlClient`.
 
@@ -62,11 +62,11 @@ Click **Save Connection** to save the connector. The canvas returns to the integ
 1. In the left panel, click **Configurations** (at the bottom of the project tree, under Data Mappers).
 2. Set a value for each configurable listed below:
 
-- **mysqlHost** — string — hostname or IP address of your MySQL server
-- **mysqlUser** — string — database username
-- **mysqlPassword** — string — database user password
-- **mysqlDatabase** — string — name of the database to connect to
-- **mysqlPort** — int — port number your MySQL server listens on
+- **mysqlHost**: string : hostname or IP address of your MySQL server
+- **mysqlUser**: string : database username
+- **mysqlPassword**: string : database user password
+- **mysqlDatabase**: string : name of the database to connect to
+- **mysqlPort**: int : port number your MySQL server listens on
 
 ## Configuring the MySQL execute operation
 
