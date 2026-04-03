@@ -21,10 +21,11 @@ Clicking **Try It** or **Chat** automatically starts the integration if it is no
 
 ### Opening the Try-It panel
 
-You can open the Try-It panel from two places in the visual designer:
+You can open the Try-It panel from the visual designer or directly from the code editor:
 
 - **Service Designer view** — Click **Try It** in the service header toolbar (next to **Configure** and **More**). This opens the Try-It panel listing all resources defined in the service.
 - **Flow diagram view** — Open a specific resource in the flow diagram, then click **Try It** in the toolbar. This opens the Try-It panel scoped to that resource.
+- **Code editor (CodeLens)** — When viewing `main.bal` in the editor, a CodeLens action bar appears above the service declaration showing **Run | Debug | Visualize | Try it**. Click **Try it** to open the Try-It panel without leaving the code editor.
 
 ![Service Designer toolbar with Try It button and Try-It panel open on the right](/img/develop/test/try-it/http-service-tryit-panel.png)
 
