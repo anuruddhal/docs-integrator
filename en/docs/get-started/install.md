@@ -1,42 +1,76 @@
 ---
 sidebar_position: 4
 title: Install WSO2 Integrator
-description: Step-by-step installation of the WSO2 Integrator VS Code extension and Ballerina distribution.
+description: Download and install WSO2 Integrator IDE to build intelligent integrations, APIs, and AI agents across cloud, on-premises, and hybrid environments.
 ---
 
 # Install WSO2 Integrator
 
-Get your development environment ready in under 5 minutes.
+Get your development environment ready to build integrations in under 5 minutes.
 
-## Step 1: Install Visual Studio Code
+WSO2 Integrator is a 100% open source IDE that enables you to connect AI agents, APIs, data, and events across cloud, on-premises, and hybrid environments with a unique low-code experience and pro-code parity.
 
-Download and install VS Code from [code.visualstudio.com/download](https://code.visualstudio.com/download).
+## Download Options
 
-## Step 2: Install the WSO2 Integrator Extension
+WSO2 Integrator is available in multiple editions to suit different use cases:
 
-1. Open VS Code.
-2. Open the Extensions view:
-   - **Windows / Linux:** `Ctrl + Shift + X`
-   - **macOS:** `Shift + Cmd + X`
-3. Search for **"WSO2 Integrator: BI"**.
-4. Click **Install**.
+- **WSO2 Integrator** -- Full-featured IDE with low-code and pro-code capabilities
+- **WSO2 Integrator: MI** -- Low-code graphical interface for integration development
+- **WSO2 Integrator: SI** -- Visual stream flow designer for streaming integrations
+- **WSO2 Integrator: ICP** -- Control plane for monitoring and managing deployments
 
-This installs both the **WSO2 Integrator: BI** extension and the **Ballerina** extension automatically.
+For development, we recommend starting with **WSO2 Integrator** (also called **WSO2 Integrator: BI**).
 
-## Step 3: Set Up the Ballerina Distribution
+## System Requirements
 
-1. Click the **BI** icon in the VS Code sidebar.
-2. Select **"Set up Ballerina distribution"** when prompted.
-3. Wait for the download and setup to complete.
-4. Restart VS Code.
+Before installation, ensure your system meets the requirements listed on the [System Requirements & Prerequisites](system-requirements.md) page. Here's a quick overview:
+
+- **Operating System:** Windows 10+, macOS 14.6+, or Ubuntu 24.04 LTS and later
+- **Memory:** 512 MB minimum (1 GB+ recommended)
+- **Disk Space:** 2 GB free space for installation and projects
+- **Java:** JRE 21 or later
+
+For detailed information, see [System Requirements & Prerequisites](system-requirements.md).
+
+## Installation Steps
+
+### Step 1: Download WSO2 Integrator
+
+1. Visit the [WSO2 Integrator Downloads page](https://wso2.com/products/downloads/?product=wso2integrator).
+2. Select your operating system (Windows, macOS, or Linux).
+3. Download the installer for WSO2 Integrator: BI.
+
+### Step 2: Install the IDE
+
+**Windows:**
+- Run the `.exe` installer and follow the installation wizard.
+
+**macOS:**
+- Run the `.dmg` installer and drag the application to the Applications folder.
+
+**Linux:**
+- Extract the `.tar.gz` file and run the startup script:
+  ```bash
+  tar -xzf wso2-integrator-*.tar.gz
+  cd wso2-integrator-*/bin
+  ./integrator.sh
+  ```
+
+### Step 3: Launch WSO2 Integrator
+
+After installation, launch the IDE:
+
+- **Windows:** Double-click the WSO2 Integrator icon on your desktop or start menu
+- **macOS:** Open Applications folder and double-click WSO2 Integrator
+- **Linux:** Run the startup script from the `bin` directory
 
 ## Verify Installation
 
-After restarting VS Code:
+After launching WSO2 Integrator:
 
-1. Open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`).
-2. Type **"WSO2 Integrator"** -- you should see available commands.
-3. Click the **BI** icon in the sidebar to access the integrations view.
+1. You should see the main IDE interface with the project explorer.
+2. Create a new project or open an existing one to verify everything is working.
+3. The IDE should display the visual designer and available tools.
 
 ## What's Next
 
