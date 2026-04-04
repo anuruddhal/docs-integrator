@@ -1144,6 +1144,7 @@ const sidebars: SidebarsConfig = {
             'connectors/catalog/database/mssql/setup-guide',
             'connectors/catalog/database/mssql/action-reference',
             'connectors/catalog/database/mssql/trigger-reference',
+            'connectors/catalog/database/mssql/example',
           ],
         },
         {
