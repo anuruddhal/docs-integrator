@@ -199,6 +199,7 @@ const sidebars: SidebarsConfig = {
           label: 'Debugging & Troubleshooting',
           items: [
             'develop/debugging/overview',
+            'develop/debugging/errors-and-stack-traces',
             'develop/debugging/editor-debugging',
             'develop/debugging/remote-debugging',
             'develop/debugging/strand-dumps',
