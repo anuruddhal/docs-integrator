@@ -95,7 +95,7 @@ Although gRPC service creation is not supported in the visual designer, you can 
 
 ![Design canvas showing OrderService as a grpc:Service node](../../../../static/img/develop/integration-artifacts/service/grpc-service/step-designer.png)
 
-Click the service node on the canvas (or click the service name in the sidebar) to open the **GRPC Service** designer, which lists all remote functions as event handlers.
+Click the service node on the canvas (or click the service name in the sidebar) to open the **gRPC Service** designer, which lists all remote functions as event handlers.
 
 ![GRPC Service designer showing event handlers](../../../../static/img/develop/integration-artifacts/service/grpc-service/step-service-designer.png)
 
