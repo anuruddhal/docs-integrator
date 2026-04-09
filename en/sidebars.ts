@@ -113,7 +113,6 @@ const sidebars: SidebarsConfig = {
                 'develop/integration-artifacts/event/rabbitmq',
                 'develop/integration-artifacts/event/mqtt',
                 'develop/integration-artifacts/event/azure-service-bus',
-                'develop/integration-artifacts/event/smtp',
                 'develop/integration-artifacts/event/pop3-imap4',
                 'develop/integration-artifacts/event/salesforce-events',
                 'develop/integration-artifacts/event/twilio',
