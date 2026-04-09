@@ -1288,6 +1288,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/finance-accounting/paypal.payments/setup-guide',
             'connectors/catalog/finance-accounting/paypal.payments/action-reference',
+            'connectors/catalog/finance-accounting/paypal.payments/example',
           ],
         },
         {
