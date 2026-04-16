@@ -799,6 +799,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.engagements.communications/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.engagements.communications/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.engagements.communications/example',
           ],
         },
         {
