@@ -52,6 +52,10 @@ project-name/
 
 Note that a library package includes a `lib.bal` file instead of `main.bal`, since libraries expose shared logic rather than executable entry points.
 
+:::tip
+You can add integrations to the same project by clicking the **+** button in the WSO2 Integrator sidebar. This lets you build integrations that consume your library within a single project workspace.
+:::
+
 ## Advanced configurations
 
 Expand the **Advanced Configurations** section to customize the project and Ballerina package settings.
