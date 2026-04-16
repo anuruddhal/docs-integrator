@@ -38,7 +38,7 @@ Integrations triggered by file arrival on FTP, SFTP, or local directories. Proce
 
 ## AI agents
 
-Intelligent artifacts backed by large language models (LLMs). Agents can reason, use tools, maintain conversation memory, and orchestrate multi-step workflows.t
+Intelligent artifacts backed by large language models (LLMs). Agents can reason, use tools, maintain conversation memory, and orchestrate multi-step workflows.
 
 ## Connectors
 
