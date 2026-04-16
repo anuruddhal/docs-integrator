@@ -75,6 +75,7 @@ const sidebars: SidebarsConfig = {
             'develop/create-integrations/explore-samples',
             'develop/create-integrations/create-library',
             'develop/create-integrations/create-project',
+            'develop/create-integrations/open-project',
             'develop/create-integrations/migrate-3rd-party-integrations',
           ],
         },
