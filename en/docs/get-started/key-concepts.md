@@ -66,4 +66,4 @@ The programming language that powers the platform. You do not need prior experie
 
 ## Low-code and pro-code
 
-Seamless switching between the design view and the code editor in WSO2 Integrator. Changes in one view instantly appear in the other. This is not a code generation tool and it is a bidirectional synchronization.
+Seamless switching between the design view and the code editor in WSO2 Integrator. Changes in one view instantly appear in the other. This is not a code generation tool, and it provides bidirectional synchronization.
