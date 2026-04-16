@@ -732,6 +732,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/example',
           ],
         },
         {
