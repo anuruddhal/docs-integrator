@@ -49,7 +49,9 @@ For each non-boolean field in the **Configure HubSpot CRM Engagements Calls** fo
 
 ### Step 4: Save the HubSpot CRM Engagements Calls connection
 
-Select **Save** to persist the connection. The `hubspot.crm.engagements.calls` connector node appears in the Connections panel on the low-code canvas.
+Select **Save** to persist the connection.
+
+Use `hubspot.crm.engagements.calls` as the exact connection name. On the low-code canvas, confirm that a connection node named `hubspot.crm.engagements.calls` appears in the **Connections** panel.
 ![Canvas showing the hubspot.crm.engagements.calls connector node in the Connections panel after saving](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_03_connections_list.png)
 
 ### Step 5: Set actual values for your configurables
@@ -70,7 +72,7 @@ Select **Save** to persist the connection. The `hubspot.crm.engagements.calls` c
 ### Step 7: Select and configure the post /crm/v3/engagements/calls operation
 
 1. Select **+** (Add Step) in the automation flow between the Start and Error Handler nodes.
-2. Under **Connections** in the node panel, select the **callsClient** node to expand it and reveal all available operations.
+2. Under **Connections** in the node panel, select the **hubspot.crm.engagements.calls** node to expand it and reveal all available operations.
 ![hubspot.crm.engagements.calls connection node expanded showing all available operations before selection](/img/connectors/catalog/crm-sales/hubspot.crm.engagements.calls/hubspot_crm_engagements_calls_screenshot_04_operations.png)
 3. Select **Create a call** (the `post /crm/v3/engagements/calls` operation) from the list, then fill in the operation fields:
 - **Payload** : The `SimplePublicObjectInputForCreate` record containing the call engagement data, including `hs_timestamp`, `hs_call_title`, `hs_call_body`, `hs_call_duration`, and `hs_call_status`
