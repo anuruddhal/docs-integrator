@@ -914,6 +914,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.pipelines/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.pipelines/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.pipelines/example',
           ],
         },
         {
