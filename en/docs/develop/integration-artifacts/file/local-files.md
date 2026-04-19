@@ -192,28 +192,50 @@ Each handler receives a `file:FileEvent` parameter with details about the file s
 | `addedFiles` | `file:FileInfo[]` | List of files added in this event cycle (available in `onCreate`) |
 | `lastModifiedTimestamp` | `int` | Last-modified time of the file as UNIX epoch milliseconds |
 
+## Reading file content
+
+Use the `ballerina/io` module to read the content of the file that triggered a handler. The path of the file is available as `event.name` on the `file:FileEvent` parameter.
+
+```ballerina
+import ballerina/file;
+import ballerina/io;
+import ballerina/log;
+
+service on fileListener {
+
+    remote function onCreate(file:FileEvent event) returns error? {
+        string content = check io:fileReadString(event.name);
+        log:printInfo("File received", path = event.name, size = content.length());
+    }
+}
+```
+
+`io` read functions:
+
+| Function | Description |
+|---|---|
+| `io:fileReadString(path)` | Read the file as a single UTF-8 string |
+| `io:fileReadBytes(path)` | Read the file as a byte array |
+| `io:fileReadLines(path)` | Read the file as a `string[]`, one entry per line |
+| `io:fileReadJson(path)` | Read and parse the file as a `json` value |
+| `io:fileReadXml(path)` | Read and parse the file as an `xml` value |
+| `io:fileReadCsv(path)` | Read and parse CSV content as `string[][]` or a record array |
+
 ## Writing output files
 
 Use the `ballerina/io` module to write results to the local file system from within a handler.
 
 ```ballerina
+import ballerina/file;
 import ballerina/io;
 import ballerina/log;
 
-type OrderSummary record {|
-    string orderId;
-    decimal total;
-    string status;
-|};
+service on fileListener {
 
-function writeResults(OrderSummary[] summaries) returns error? {
-    // Write a CSV file
-    check io:fileWriteCsv("/data/outgoing/summary.csv", summaries);
-
-    // Write a plain text file
-    check io:fileWriteString("/data/outgoing/report.txt", "Processing complete.");
-
-    log:printInfo("Output files written", count = summaries.length());
+    remote function onCreate(file:FileEvent event) returns error? {
+        check io:fileWriteString("/data/outgoing/report.txt", "Processing complete.");
+        log:printInfo("Output written", trigger = event.name);
+    }
 }
 ```
 
