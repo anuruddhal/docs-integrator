@@ -196,6 +196,26 @@ Each handler receives a `file:FileEvent` parameter with details about the file s
 
 Use the `ballerina/io` module to read the content of the file that triggered a handler. The path of the file is available as `event.name` on the `file:FileEvent` parameter.
 
+<Tabs>
+<TabItem value="ui" label="Visual Designer" default>
+
+In the **Service Designer**, open the handler and build the flow with two nodes — a Variable that captures the file content and a Log that prints it:
+
+1. Click **+** on the handler canvas to add a node, pick **Declare Variable**, and fill in:
+
+   | Field | Value |
+   |---|---|
+   | **Type** | `string` |
+   | **Name** | `content` (or any identifier) |
+   | **Expression** | `check io:fileReadString(event.name)` |
+
+   Open the helper panel and click `fileReadString()` under the **Functions** tab to insert the call — this also imports the `ballerina/io` module for you. Save the node.
+
+2. Click **+** after the Variable, pick **Log** → **Log Info**, switch the **Msg** field to **Expression** mode, and enter `content`. Save the node.
+
+</TabItem>
+<TabItem value="code" label="Ballerina Code">
+
 ```ballerina
 import ballerina/file;
 import ballerina/io;
@@ -209,6 +229,9 @@ service on fileListener {
     }
 }
 ```
+
+</TabItem>
+</Tabs>
 
 `io` read functions:
 
@@ -225,6 +248,26 @@ service on fileListener {
 
 Use the `ballerina/io` module to write results to the local file system from within a handler.
 
+<Tabs>
+<TabItem value="ui" label="Visual Designer" default>
+
+The `io` write functions return `error?`, so the same Variable-node pattern as reading works — capture the result and log a confirmation:
+
+1. Click **+** on the handler canvas to add a node, pick **Declare Variable**, and fill in:
+
+   | Field | Value |
+   |---|---|
+   | **Type** | `error?` |
+   | **Name** | `writeResult` |
+   | **Expression** | `io:fileWriteString("/data/outgoing/report.txt", "Processing complete.")` |
+
+   Open the helper panel and click `fileWriteString()` under the **Functions** tab to insert the call and import `ballerina/io`. Save the node.
+
+2. Click **+** after the Variable, pick **Log** → **Log Info**, and enter a confirmation message such as `"Output written"`. Save the node.
+
+</TabItem>
+<TabItem value="code" label="Ballerina Code">
+
 ```ballerina
 import ballerina/file;
 import ballerina/io;
@@ -238,6 +281,9 @@ service on fileListener {
     }
 }
 ```
+
+</TabItem>
+</Tabs>
 
 `io` write functions:
 
