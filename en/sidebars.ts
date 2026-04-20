@@ -839,6 +839,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.engagements.tasks/example',
           ],
         },
         {
@@ -848,6 +849,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.extensions.timelines/example',
           ],
         },
         {
@@ -857,6 +859,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.extensions.videoconferencing/example',
           ],
         },
         {
@@ -885,6 +888,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.obj.leads/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.obj.leads/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.obj.leads/example',
           ],
         },
         {
@@ -954,6 +958,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.obj.schemas/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.obj.schemas/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.obj.schemas/example',
           ],
         },
         {
@@ -963,6 +968,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.obj.tickets/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.obj.tickets/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.obj.tickets/example',
           ],
         },
         {
@@ -1490,6 +1496,7 @@ const sidebars: SidebarsConfig = {
             'connectors/catalog/crm-sales/salesforce/setup-guide',
             'connectors/catalog/crm-sales/salesforce/action-reference',
             'connectors/catalog/crm-sales/salesforce/trigger-reference',
+            'connectors/catalog/crm-sales/salesforce/example',
           ],
         },
         {
