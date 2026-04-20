@@ -679,6 +679,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.automation.actions/setup-guide',
             'connectors/catalog/crm-sales/hubspot.automation.actions/action-reference',
+            'connectors/catalog/crm-sales/hubspot.automation.actions/example',
           ],
         },
         {
@@ -688,6 +689,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.associations/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.associations/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.associations/example',
           ],
         },
         {
@@ -697,6 +699,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.associations.schema/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.associations.schema/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.associations.schema/example',
           ],
         },
         {
@@ -706,6 +709,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.commerce.carts/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.commerce.carts/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.commerce.carts/example',
           ],
         },
         {
@@ -715,6 +719,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.commerce.discounts/example',
           ],
         },
         {
@@ -724,6 +729,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.commerce.orders/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.commerce.orders/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.commerce.orders/example',
           ],
         },
         {
@@ -733,6 +739,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.commerce.quotes/example',
           ],
         },
         {
@@ -742,6 +749,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.commerce.taxes/example',
           ],
         },
         {
@@ -796,6 +804,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.engagements.calls/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.engagements.calls/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.engagements.calls/example',
           ],
         },
         {
@@ -805,6 +814,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.engagements.communications/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.engagements.communications/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.engagements.communications/example',
           ],
         },
         {
