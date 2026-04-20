@@ -759,6 +759,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.obj.companies/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.obj.companies/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.obj.companies/example',
           ],
         },
         {
@@ -768,6 +769,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.obj.contacts/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.obj.contacts/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.obj.contacts/example',
           ],
         },
         {
@@ -777,6 +779,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.obj.deals/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.obj.deals/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.obj.deals/example',
           ],
         },
         {
@@ -786,6 +789,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.engagement.meeting/example',
           ],
         },
         {
@@ -795,6 +799,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.engagement.notes/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.engagement.notes/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.engagement.notes/example',
           ],
         },
         {
@@ -824,6 +829,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.engagements.email/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.engagements.email/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.engagements.email/example',
           ],
         },
         {
@@ -860,6 +866,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.obj.feedback/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.obj.feedback/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.obj.feedback/example',
           ],
         },
         {
@@ -887,6 +894,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.obj.lineitems/example',
           ],
         },
         {
@@ -896,6 +904,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.lists/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.lists/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.lists/example',
           ],
         },
         {
@@ -905,6 +914,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.owners/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.owners/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.owners/example',
           ],
         },
         {
@@ -914,6 +924,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.pipelines/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.pipelines/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.pipelines/example',
           ],
         },
         {
@@ -923,6 +934,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.obj.products/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.obj.products/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.obj.products/example',
           ],
         },
         {
@@ -932,6 +944,7 @@ const sidebars: SidebarsConfig = {
           items: [
             'connectors/catalog/crm-sales/hubspot.crm.properties/setup-guide',
             'connectors/catalog/crm-sales/hubspot.crm.properties/action-reference',
+            'connectors/catalog/crm-sales/hubspot.crm.properties/example',
           ],
         },
         {
