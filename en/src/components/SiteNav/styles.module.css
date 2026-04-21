@@ -78,7 +78,13 @@
   display: flex;
   flex-direction: column;
   transform: translateX(-100%);
-  transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+  /* Hide from the keyboard-focus order while the drawer is closed —
+     transform alone leaves links focusable. Delay the visibility flip
+     until after the slide-out finishes so the close transition shows. */
+  visibility: hidden;
+  transition:
+    transform 0.28s cubic-bezier(0.32, 0.72, 0, 1),
+    visibility 0s linear 0.28s;
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.08);
 }
 
@@ -89,6 +95,8 @@
 
 .drawerOpen {
   transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .drawerScroll {
@@ -98,6 +106,7 @@
   padding-top: 0.75rem;
 }
 
+/* stylelint-disable selector-pseudo-class-no-unknown -- CSS Modules :global(...) selectors */
 .drawerScroll :global(.menu) {
   padding-top: 0;
 }
@@ -110,6 +119,7 @@
 .drawerScroll :global(.menu__list-item:first-child) {
   margin-top: 0;
 }
+/* stylelint-enable selector-pseudo-class-no-unknown */
 
 /* ================================================================
    MI DOCUMENTATION — pinned to drawer footer with distinct style

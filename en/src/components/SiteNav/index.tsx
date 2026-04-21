@@ -114,9 +114,28 @@ function NavDrawer({
   );
 }
 
+/**
+ * Track whether the viewport currently matches the desktop breakpoint
+ * (matches the `(min-width: 997px)` rule that hides the toggle in CSS).
+ * Default to `true` for SSR so the markup matches the desktop layout the
+ * server renders. The first client-side effect corrects it.
+ */
+function useIsDesktop(): boolean {
+  const [isDesktop, setIsDesktop] = useState(true);
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 997px)');
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener('change', update);
+    return () => mq.removeEventListener('change', update);
+  }, []);
+  return isDesktop;
+}
+
 export default function SiteNav(): ReactNode {
   const { pathname } = useLocation();
   const onHome = isHomepage(pathname);
+  const isDesktop = useIsDesktop();
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   // Pull the resolved sidebars from the expose-sidebars plugin.
@@ -126,12 +145,20 @@ export default function SiteNav(): ReactNode {
     [data],
   );
 
-  // Close drawer when route changes.
+  // Close drawer when route changes or viewport drops below desktop —
+  // CSS hides the hamburger on mobile, so don't leave a drawer or its
+  // body scroll-lock dangling.
   useEffect(() => {
     setDrawerOpen(false);
   }, [pathname]);
 
-  if (!onHome) return null;
+  useEffect(() => {
+    if (!isDesktop) setDrawerOpen(false);
+  }, [isDesktop]);
+
+  // Skip rendering entirely outside the homepage or below the desktop
+  // breakpoint — Docusaurus's native menu owns mobile nav.
+  if (!onHome || !isDesktop) return null;
 
   return (
     <>

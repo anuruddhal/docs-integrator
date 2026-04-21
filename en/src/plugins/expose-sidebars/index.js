@@ -42,6 +42,14 @@ module.exports = function exposeSidebarsPlugin() {
         docInfo.set(doc.id, { permalink: doc.permalink, label });
       }
 
+      // Carry these through unchanged on every item so theme-level styling
+      // (e.g. `.menu__list-item.hidden` for hidden entries) and arbitrary
+      // user metadata still apply in the homepage drawer.
+      const passThrough = (item) => ({
+        ...(item.className !== undefined ? { className: item.className } : {}),
+        ...(item.customProps !== undefined ? { customProps: item.customProps } : {}),
+      });
+
       const resolve = (items) =>
         (items ?? []).map((item) => {
           if (item.type === 'doc' || item.type === 'ref') {
@@ -51,6 +59,7 @@ module.exports = function exposeSidebarsPlugin() {
               label: item.label ?? info?.label ?? item.id,
               href: info?.permalink ?? `#missing-${item.id}`,
               docId: item.id,
+              ...passThrough(item),
             };
           }
           if (item.type === 'link') {
@@ -58,6 +67,7 @@ module.exports = function exposeSidebarsPlugin() {
               type: 'link',
               label: item.label,
               href: item.href,
+              ...passThrough(item),
             };
           }
           if (item.type === 'category') {
@@ -74,6 +84,7 @@ module.exports = function exposeSidebarsPlugin() {
               collapsible: item.collapsible !== false,
               collapsed: item.collapsed !== false,
               ...(href ? { href } : {}),
+              ...passThrough(item),
               items: resolve(item.items),
             };
           }
