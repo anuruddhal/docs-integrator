@@ -12,7 +12,7 @@ You design integrations visually in the [WSO2 Integrator IDE](https://wso2.com/i
 
 ## High-level architecture
 
-![WSO2 Integrator architecture diagram](@site/src/assets/img/get-started/overview-&-architecture/integrator_diagram.webp)
+![WSO2 Integrator architecture diagram](@site/src/assets/img/get-started/overview-and-architecture/integrator_diagram.webp)
 
 The platform follows a three-layer architecture:
 
