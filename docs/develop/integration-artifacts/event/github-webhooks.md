@@ -4,17 +4,17 @@ title: GitHub Webhooks
 
 # GitHub Webhooks
 
-GitHub event integration is currently in **Beta**.
+GitHub event integration is currently in **Beta**. APIs and behavior may change in future releases.
 
 GitHub event integrations receive webhook callbacks from GitHub and trigger handler functions as repository events occur. Use them to automate CI/CD workflows, sync issue trackers, enforce code review policies, and react to repository activity in real time.
 
-## Creating a GitHub events service
+## Creating a GitHub Events service
 
 1. Click **+ Add Artifact** in the canvas or click **+** next to **Entry Points** in the sidebar.
 2. In the **Artifacts** panel, select **GitHub** under **Event Integration**.
 3. In the creation form, fill in the following fields:
 
-   ![GitHub Event Integration creation form](/img/develop/integration-artifacts/event/github-webhooks/step-creation-form.png)
+   ![Github Webhook creation form](/img/develop/integration-artifacts/event/github-webhooks/step-creation-form.png)
 
    | Field | Description | Default |
    |---|---|---|
@@ -32,9 +32,11 @@ GitHub event integrations receive webhook callbacks from GitHub and trigger hand
 
 5. WSO2 Integrator opens the service in the **Service Designer**. The canvas shows the attached listener pill, the active event channel pill, and the **Event Handlers** section with all handlers for the selected channel pre-added.
 
-   ![Service Designer showing the GitHub Event Integration canvas](/img/develop/integration-artifacts/event/github-webhooks/step-service-designer.png)
+   ![Github Service Designer View](/img/develop/integration-artifacts/event/github-webhooks/step-service-designer.png)
 
    All event handlers for the selected channel are added automatically. Click any handler to open it in the flow diagram view and implement the logic.
+
+The following complete, runnable Ballerina program creates a GitHub event integration that listens for issue events and logs each one.
 
 ```ballerina
 import ballerinax/trigger.github;
@@ -43,58 +45,53 @@ import ballerina/log;
 configurable string webhookSecret = ?;
 configurable int port = 8090;
 
-listener github:Listener githubListener = new (port, {webhookSecret: webhookSecret});
+listener github:Listener githubListener = new (
+    listenerConfig = {webhookSecret: webhookSecret},
+    listenOn = port
+);
 
 service github:IssuesService on githubListener {
 
-    remote function onOpened(github:IssuesEvent event) returns error? {
+    remote function onOpened(github:IssuesEvent payload) returns error? {
         log:printInfo("Issue opened",
-                      number = event.issue.number,
-                      title = event.issue.title,
-                      repo = event.repository.name);
+                      number = payload.issue.number,
+                      title = payload.issue.title,
+                      repo = payload.repository.name);
     }
 
-    remote function onClosed(github:IssuesEvent event) returns error? {
-        log:printInfo("Issue closed", number = event.issue.number);
+    remote function onClosed(github:IssuesEvent payload) returns error? {
+        log:printInfo("Issue closed", number = payload.issue.number);
     }
 
-    remote function onReopened(github:IssuesEvent event) returns error? {
-        log:printInfo("Issue reopened", number = event.issue.number);
+    remote function onReopened(github:IssuesEvent payload) returns error? {
+        log:printInfo("Issue reopened", number = payload.issue.number);
     }
 
-    remote function onAssigned(github:IssuesEvent event) returns error? {
-        log:printInfo("Issue assigned", number = event.issue.number);
+    remote function onAssigned(github:IssuesEvent payload) returns error? {
+        log:printInfo("Issue assigned", number = payload.issue.number);
     }
 
-    remote function onUnassigned(github:IssuesEvent event) returns error? {
-        log:printInfo("Issue unassigned", number = event.issue.number);
+    remote function onUnassigned(github:IssuesEvent payload) returns error? {
+        log:printInfo("Issue unassigned", number = payload.issue.number);
     }
 
-    remote function onLabeled(github:IssuesEvent event) returns error? {
-        log:printInfo("Issue labeled", number = event.issue.number);
+    remote function onLabeled(github:IssuesEvent payload) returns error? {
+        log:printInfo("Issue labeled", number = payload.issue.number);
     }
 
-    remote function onUnlabeled(github:IssuesEvent event) returns error? {
-        log:printInfo("Issue unlabeled", number = event.issue.number);
+    remote function onUnlabeled(github:IssuesEvent payload) returns error? {
+        log:printInfo("Issue unlabeled", number = payload.issue.number);
     }
 }
 ```
 
-## Service and listener configuration
+Save this as `main.bal` and run `bal run` from the project directory. Configure your GitHub repository webhook to point at the listener URL and use the same `webhookSecret` value in the webhook settings.
+
+## Listener configuration
 
 In the **Service Designer**, click the **Configure** icon in the header to open the **GitHub Event Integration Configuration** panel.
 
-![GitHub Event Integration Configuration panel](/img/develop/integration-artifacts/event/github-webhooks/step-configuration.png)
-
-The configuration panel has two sections. The top section configures the service and the bottom section configures the attached listener.
-
-**Service configuration:**
-
-| Field | Description |
-|---|---|
-| **Event Channel** | The GitHub event channel this service handles. Select from the available service types. |
-
-**Listener configuration** (under **Configuration for githubListener**):
+   ![Github Connection Configure View](/img/develop/integration-artifacts/event/github-webhooks/step-configuration.png)
 
 | Field | Description | Default |
 |---|---|---|
@@ -106,10 +103,12 @@ Click **+ Attach Listener** to attach an additional listener to the same service
 
 Click **Save Changes** to apply updates.
 
+The listener is declared at the module level and takes a `ListenerConfig` value plus a port. `webhookSecret` is used to validate the HMAC signature on incoming GitHub webhook requests. Use `configurable` so the secret can be supplied via `Config.toml` or an environment variable without changing source code.
+
 ```ballerina
 listener github:Listener githubListener = new (
-    8090,
-    {webhookSecret: webhookSecret}
+    listenerConfig = {webhookSecret: webhookSecret},
+    listenOn = 8090
 );
 ```
 
@@ -142,6 +141,8 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 
 ### IssuesService handlers
 
+Each handler receives a [github:IssuesEvent](../../../connectors/catalog/developer-tools/github/triggers.md#issuesevent) payload.
+
 | Handler | Triggered when |
 |---|---|
 | `onOpened` | A new issue is opened |
@@ -154,13 +155,15 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 
 ### PullRequestService handlers
 
+Each handler receives a [github:PullRequestEvent](../../../connectors/catalog/developer-tools/github/triggers.md#pullrequestevent) payload.
+
 | Handler | Triggered when |
 |---|---|
 | `onOpened` | A pull request is opened |
 | `onClosed` | A pull request is closed or merged |
 | `onReopened` | A closed pull request is reopened |
-| `onAssigned` | A reviewer is assigned |
-| `onUnassigned` | A reviewer is unassigned |
+| `onAssigned` | A user is assigned to a pull request |
+| `onUnassigned` | A user is unassigned from a pull request |
 | `onLabeled` | A label is added |
 | `onUnlabeled` | A label is removed |
 | `onEdited` | A pull request title, body, or base branch is edited |
@@ -168,6 +171,8 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 | `onReviewRequestRemoved` | A review request is removed |
 
 ### IssueCommentService handlers
+
+Each handler receives a [github:IssueCommentEvent](../../../connectors/catalog/developer-tools/github/triggers.md#issuecommentevent) payload.
 
 | Handler | Triggered when |
 |---|---|
@@ -177,6 +182,8 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 
 ### PullRequestReviewService handlers
 
+Each handler receives a [github:PullRequestReviewEvent](../../../connectors/catalog/developer-tools/github/triggers.md#pullrequestreviewevent) payload.
+
 | Handler | Triggered when |
 |---|---|
 | `onSubmitted` | A pull request review is submitted |
@@ -185,13 +192,17 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 
 ### PullRequestReviewCommentService handlers
 
+Each handler receives a [github:PullRequestReviewCommentEvent](../../../connectors/catalog/developer-tools/github/triggers.md#pullrequestreviewcommentevent) payload.
+
 | Handler | Triggered when |
 |---|---|
 | `onCreated` | A comment is added to a pull request diff |
-| `onEdited` | A diff comment is edited |
-| `onDeleted` | A diff comment is deleted |
+| `onEdited` | A comment on a pull request diff is edited |
+| `onDeleted` | A comment on a pull request diff is deleted |
 
 ### ReleaseService handlers
+
+Each handler receives a [github:ReleaseEvent](../../../connectors/catalog/developer-tools/github/triggers.md#releaseevent) payload.
 
 | Handler | Triggered when |
 |---|---|
@@ -205,6 +216,8 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 
 ### LabelService handlers
 
+Each handler receives a [github:LabelEvent](../../../connectors/catalog/developer-tools/github/triggers.md#labelevent) payload.
+
 | Handler | Triggered when |
 |---|---|
 | `onCreated` | A label is created in the repository |
@@ -212,6 +225,8 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 | `onDeleted` | A label is deleted |
 
 ### MilestoneService handlers
+
+Each handler receives a [github:MilestoneEvent](../../../connectors/catalog/developer-tools/github/triggers.md#milestoneevent) payload.
 
 | Handler | Triggered when |
 |---|---|
@@ -223,11 +238,15 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 
 ### PushService handlers
 
+The handler receives a [github:PushEvent](../../../connectors/catalog/developer-tools/github/triggers.md#pushevent) payload.
+
 | Handler | Triggered when |
 |---|---|
 | `onPush` | Commits are pushed to a branch or a tag is created or deleted |
 
 ### ProjectCardService handlers
+
+Each handler receives a [github:ProjectCardEvent](../../../connectors/catalog/developer-tools/github/triggers.md#projectcardevent) payload.
 
 | Handler | Triggered when |
 |---|---|
@@ -237,9 +256,33 @@ When a GitHub Events service is created, WSO2 Integrator adds all handlers for t
 | `onConverted` | A card note is converted to an issue |
 | `onDeleted` | A card is deleted from a project board |
 
+## Error handling
+
+If an event handler returns an error, the GitHub listener logs the error and continues processing subsequent events. Use `do/on fail` inside each handler to catch and recover from expected failures without propagating them to the listener.
+
+Add an **Error Handler** block inside the handler flow to define recovery logic. Errors that escape the handler are caught by the listener and logged automatically.
+
+The GitHub listener catches errors returned from handler methods, logs them, and continues processing subsequent events. Use `do/on fail` inside a handler to take control of recovery before the error reaches the listener.
+
+```ballerina
+service github:IssuesService on githubListener {
+
+    remote function onOpened(github:IssuesEvent payload) returns error? {
+        do {
+            log:printInfo("Issue opened", number = payload.issue.number);
+        } on fail error err {
+            log:printError("Failed to handle onOpened event", err);
+        }
+    }
+}
+```
+
+Return `error?` from a handler to allow unhandled errors to propagate to the listener. Return `()` to suppress them.
+
 ## What's next
 
 - [Kafka](kafka.md) — consume messages from Apache Kafka topics
 - [Salesforce Events](salesforce-events.md) — listen to Salesforce Change Data Capture events
 - [Connections](../supporting/connections.md) — reuse GitHub credentials across services
 - [GitHub connector reference](../../../connectors/catalog/developer-tools/github/connector-overview.md) — full connector API reference
+- [GitHub Personal Access Token Setup Guide](../../../connectors/catalog/developer-tools/github/setup-guide.md) — create a GitHub Personal Access Token and configure a repository webhook
