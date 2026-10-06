@@ -268,9 +268,33 @@ service /health on new http:Listener(9091) {
 }
 ```
 
+## Run on Amazon EC2
+
+If the integration uses AWS connectors, don't copy access keys to the instance. Attach an **instance profile** that contains an IAM role with the permissions the connectors need, and configure the connectors with `auth:DEFAULT_CREDENTIALS`:
+
+```bash
+aws ec2 associate-iam-instance-profile \
+  --instance-id <instance-id> \
+  --iam-instance-profile Name=my-integration-profile
+```
+
+The connectors then read temporary credentials from the instance metadata service and refresh them automatically. See [Access AWS Services Securely](../secure/aws-access.md).
+
+:::note
+If the integration runs in a container on the instance and IMDSv2 is enforced, set the metadata hop limit to `2`. Otherwise the container cannot reach the metadata service:
+
+```bash
+aws ec2 modify-instance-metadata-options \
+  --instance-id <instance-id> \
+  --http-put-response-hop-limit 2 \
+  --http-tokens required
+```
+:::
+
 ## What's next
 
 - [Containerized Deployment](containerized-deployment.md) — Deploy your project to Docker, Kubernetes, or Red Hat OpenShift using Code to Cloud
 - [Managing Configurations](../managing-configurations.md) — Per-environment configuration strategies
 - [Scaling & High Availability](../scaling-high-availability.md) — Run multiple instances behind a load balancer
 - [GraalVM Native Images](graalvm-native-images.md) — Compile to native binaries for faster startup
+- [WSO2 Integrator on AWS](../../aws.md) — Everything WSO2 Integrator offers on AWS
