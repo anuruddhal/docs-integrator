@@ -786,12 +786,18 @@ To run on AWS Graviton, build with `--platform linux/arm64` and add `"runtimePla
 
 ### Step 3: Store configuration in AWS
 
-Keep secrets in Secrets Manager and plain settings in SSM Parameter Store:
+Keep secrets in Secrets Manager and plain settings in SSM Parameter Store.
+
+To keep the password out of your shell history and the process list, put the secret in a file instead of on the command line. Create `db-secret.json` with a text editor, with the content `{"password":"<db-password>"}`, and then run:
 
 ```bash
+chmod 600 db-secret.json
+
 aws secretsmanager create-secret --region <region> \
   --name prod/my-integration/db \
-  --secret-string '{"password":"<db-password>"}'
+  --secret-string file://db-secret.json
+
+rm db-secret.json
 
 aws ssm put-parameter --region <region> \
   --name /my-integration/prod/queue-url \
