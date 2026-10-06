@@ -207,8 +207,20 @@ public function publishOrderPlaced(string orderId) returns error? {
         request.setHeader(name, value);
     }
     http:Response response = check eventBridge->execute("POST", "/", request);
+    if response.statusCode != http:STATUS_OK {
+        return error(string `PutEvents failed with HTTP ${response.statusCode}: ${check response.getTextPayload()}`);
+    }
+
+    // PutEvents returns HTTP 200 even when it rejects some entries
+    json result = check response.getJsonPayload();
+    int failedEntryCount = check (check result.FailedEntryCount).ensureType();
+    if failedEntryCount > 0 {
+        return error(string `PutEvents rejected ${failedEntryCount} entries: ${(check result.Entries).toJsonString()}`);
+    }
 }
 ```
+
+`PutEvents` can accept some entries and reject others in the same call, so check `FailedEntryCount` as well as the HTTP status. Each rejected entry in `Entries` carries an `ErrorCode` and `ErrorMessage`.
 
 Create one `auth:CredentialProvider` and reuse it. It caches credentials and renews temporary credentials automatically.
 
