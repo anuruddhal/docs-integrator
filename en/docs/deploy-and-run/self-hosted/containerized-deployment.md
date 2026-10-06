@@ -21,12 +21,12 @@ The Code to Cloud feature supports the following containerized deployment platfo
 - **[Amazon ECS](#amazon-ecs-deployment)** — Run on AWS Fargate without a Kubernetes cluster, using ECR for image hosting, IAM task roles for AWS credentials, and Secrets Manager for configuration
 - **[Azure AKS](#azure-aks-deployment)** — Deploy to Azure Kubernetes Service using ACR for image hosting and an Azure Load Balancer for service access
 
-:::info Prerequisites
+## Prerequisites {#general-prerequisites}
+
 - [Docker](https://www.docker.com/) installed and running on your build machine
 - A WSO2 Integrator project based on Ballerina
 - For Kubernetes: [kubectl](https://kubernetes.io/docs/tasks/tools/) installed and configured against a Kubernetes cluster
 - For OpenShift: [OpenShift CLI (`oc`)](https://docs.openshift.com/container-platform/latest/cli_reference/openshift_cli/getting-started-cli.html) installed and logged in to your cluster
-:::
 
 :::note Package naming constraint
 The `name` field in `Ballerina.toml` must contain only alphanumerics, underscores, and periods — hyphens are not allowed. Use `my_integration` rather than `my-integration`. Image names in `Cloud.toml` under `[container.image]` can include hyphens.
@@ -523,7 +523,7 @@ Amazon Elastic Kubernetes Service (EKS) follows the same Kubernetes deployment p
 
 ### Prerequisites
 
-In addition to the [general prerequisites](#prerequisites), you need:
+In addition to the [general prerequisites](#general-prerequisites), you need:
 
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configured (`aws configure` or `aws sso login`)
 - An EKS cluster with `kubectl` configured: `aws eks update-kubeconfig --region <region> --name <cluster-name>`
@@ -731,7 +731,7 @@ Amazon Elastic Container Service (ECS) on AWS Fargate runs the container image b
 
 ### Prerequisites
 
-In addition to the [general prerequisites](#supported-platforms), you need:
+In addition to the [general prerequisites](#general-prerequisites), you need:
 
 - [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed and configured (`aws configure` or `aws sso login`)
 - A VPC with at least two subnets, and a security group that allows inbound traffic on the integration's port (`9090` in this example)
@@ -913,7 +913,7 @@ Azure Kubernetes Service (AKS) follows the same Kubernetes deployment path descr
 
 ### Prerequisites
 
-In addition to the [general prerequisites](#prerequisites), you need:
+In addition to the [general prerequisites](#general-prerequisites), you need:
 
 - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli) installed and configured (`az login`)
 - An AKS cluster with `kubectl` configured: `az aks get-credentials --resource-group <resource-group> --name <cluster-name>`
