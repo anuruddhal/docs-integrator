@@ -44,6 +44,38 @@ WSO2 Integrator has native support for AWS. Connect to AWS services with dedicat
 
 </PaletteGrid>
 
+## AI
+
+<PaletteGrid>
+
+<PaletteCard icon="agents" href="/develop-and-test/integration-artifacts/ai-integrations/agents/memory#creating-an-amazon-dynamodb-short-term-memory-store">
+  <h3 class="palette-card-title">Agent Memory in DynamoDB</h3>
+  <ul class="palette-card-list">
+    <li>Persist AI agent conversation history in Amazon DynamoDB</li>
+    <li>Suits serverless, AWS-native deployments</li>
+  </ul>
+</PaletteCard>
+
+<PaletteCard icon="ai">
+  <h3 class="palette-card-title">Copilot with Amazon Bedrock</h3>
+  <p class="palette-card-desc">Run WSO2 Integrator Copilot on Claude models in your own Amazon Bedrock account.</p>
+  <div class="palette-chip-row">
+    <PaletteChip href="/editor/copilot/getting-started#sign-in-from-the-copilot-welcome-screen">Sign in with Bedrock</PaletteChip>
+    <PaletteChip href="/editor/copilot/copilot-architecture#amazon-bedrock">How Copilot uses Bedrock</PaletteChip>
+  </div>
+</PaletteCard>
+
+<PaletteCard icon="migrate">
+  <h3 class="palette-card-title">AI-Assisted Migration</h3>
+  <p class="palette-card-desc">Use Amazon Bedrock for the AI enhancement step of the migration tools.</p>
+  <div class="palette-chip-row">
+    <PaletteChip href="/migrate/from-mulesoft#step-5-ai-enhancement">From MuleSoft</PaletteChip>
+    <PaletteChip href="/migrate/from-tibco#step-5-ai-enhancement">From TIBCO</PaletteChip>
+  </div>
+</PaletteCard>
+
+</PaletteGrid>
+
 ## Deploy
 
 <PaletteGrid cols={4}>
@@ -189,4 +221,4 @@ Each AWS service has its own connector. Add a connector from the WSO2 Integrator
 
 </PaletteGrid>
 
-For AI integrations, [`ballerinax/ai.aws.dynamodb`](https://central.ballerina.io/ballerinax/ai.aws.dynamodb/latest) stores agent conversation memory in DynamoDB. For change data capture, [`ballerinax/cdc.schema.aws.s3.driver`](https://central.ballerina.io/ballerinax/cdc.schema.aws.s3.driver/latest) keeps the <a href="/integration-platform/docs/connectors/catalog/database/cdc/connector-overview">CDC connector</a>'s schema history in S3. To browse every connector, see the <a href="/integration-platform/docs/connectors/catalog">connector catalog</a>.
+For change data capture, [`ballerinax/cdc.schema.aws.s3.driver`](https://central.ballerina.io/ballerinax/cdc.schema.aws.s3.driver/latest) keeps the <a href="/integration-platform/docs/connectors/catalog/database/cdc/connector-overview">CDC connector</a>'s schema history in S3. To browse every connector, see the <a href="/integration-platform/docs/connectors/catalog">connector catalog</a>.
