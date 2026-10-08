@@ -260,7 +260,7 @@ Environment variables are read only when the process starts. After you rotate a 
 
 ### Read secrets at runtime
 
-To pick up rotated values without a restart, read the secret with the [`ballerinax/aws.secretmanager`](pathname:///integration-platform/docs/connectors/catalog/security-identity/aws.secretmanager/aws-secrets-manager-connector-overview) connector. With `auth:DEFAULT_CREDENTIALS`, the connector uses the IAM role of the compute environment, so no access keys are needed to fetch the secret. See [Access AWS Services Securely](aws-access.md).
+To pick up rotated values without a restart, read the secret with the <a href="/integration-platform/docs/connectors/catalog/security-identity/aws.secretmanager/aws-secrets-manager-connector-overview"><code>ballerinax/aws.secretmanager</code></a> connector. With `auth:DEFAULT_CREDENTIALS`, the connector uses the IAM role of the compute environment, so no access keys are needed to fetch the secret. See [Access AWS Services Securely](aws-access.md).
 
 ```ballerina
 import ballerinax/aws;
