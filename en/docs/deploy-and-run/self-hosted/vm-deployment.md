@@ -291,6 +291,10 @@ aws ec2 modify-instance-metadata-options \
 ```
 :::
 
+:::warning
+The instance profile is shared by everything on the instance. With the hop limit at `2`, any container that can reach the metadata service, not just the integration, can get the role's credentials. Run the integration on an instance dedicated to it. If other containers must share the instance, run them on Amazon ECS with a separate task role for each, and block their access to the metadata service. For strict isolation, use AWS Fargate. See the [Amazon EC2 instance configuration for ECS task roles](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html#task-iam-role-considerations) in the AWS documentation.
+:::
+
 ## What's next
 
 - [Containerized Deployment](containerized-deployment.md) — Deploy your project to Docker, Kubernetes, or Red Hat OpenShift using Code to Cloud
