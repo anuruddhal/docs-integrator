@@ -178,3 +178,4 @@ Integrations log to stderr, so on AWS the platform ships the output to CloudWatc
 - [Metrics](metrics.md) — Monitor service health with Prometheus
 - [Distributed tracing](tracing.md) — Trace requests across services
 - [Integration Control Plane](../icp/index.md) — Centralized monitoring dashboard
+- [WSO2 Integrator on AWS](../aws.md) — Everything WSO2 Integrator offers on AWS
